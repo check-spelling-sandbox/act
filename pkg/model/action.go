@@ -18,7 +18,7 @@ func (a *ActionRunsUsing) UnmarshalYAML(unmarshal func(interface{}) error) error
 		return err
 	}
 
-	// Force input to lowercase for case insensitive comparison
+	// Force input to lowercase for case-insensitive comparison
 	format := ActionRunsUsing(strings.ToLower(using))
 	switch format {
 	case ActionRunsUsingNode20, ActionRunsUsingNode16, ActionRunsUsingNode12, ActionRunsUsingDocker, ActionRunsUsingComposite:

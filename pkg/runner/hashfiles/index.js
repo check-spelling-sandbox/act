@@ -2417,7 +2417,7 @@ class HttpClient {
                     // strip authorization header if redirected to a different hostname
                     if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
                         for (const header in headers) {
-                            // header names are case insensitive
+                            // header names are case-insensitive
                             if (header.toLowerCase() === 'authorization') {
                                 delete headers[header];
                             }
