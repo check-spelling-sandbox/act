@@ -19,7 +19,7 @@ import (
 	"github.com/rhysd/actionlint"
 )
 
-func (impl *interperterImpl) contains(search, item reflect.Value) (bool, error) {
+func (impl *interpreterImpl) contains(search, item reflect.Value) (bool, error) {
 	switch search.Kind() {
 	case reflect.String, reflect.Int, reflect.Float64, reflect.Bool, reflect.Invalid:
 		return strings.Contains(
@@ -44,14 +44,14 @@ func (impl *interperterImpl) contains(search, item reflect.Value) (bool, error) 
 	return false, nil
 }
 
-func (impl *interperterImpl) startsWith(searchString, searchValue reflect.Value) (bool, error) {
+func (impl *interpreterImpl) startsWith(searchString, searchValue reflect.Value) (bool, error) {
 	return strings.HasPrefix(
 		strings.ToLower(impl.coerceToString(searchString).String()),
 		strings.ToLower(impl.coerceToString(searchValue).String()),
 	), nil
 }
 
-func (impl *interperterImpl) endsWith(searchString, searchValue reflect.Value) (bool, error) {
+func (impl *interpreterImpl) endsWith(searchString, searchValue reflect.Value) (bool, error) {
 	return strings.HasSuffix(
 		strings.ToLower(impl.coerceToString(searchString).String()),
 		strings.ToLower(impl.coerceToString(searchValue).String()),
@@ -64,7 +64,7 @@ const (
 	bracketClose
 )
 
-func (impl *interperterImpl) format(str reflect.Value, replaceValue ...reflect.Value) (string, error) {
+func (impl *interpreterImpl) format(str reflect.Value, replaceValue ...reflect.Value) (string, error) {
 	input := impl.coerceToString(str).String()
 	output := ""
 	replacementIndex := ""
@@ -137,7 +137,7 @@ func (impl *interperterImpl) format(str reflect.Value, replaceValue ...reflect.V
 	return output, nil
 }
 
-func (impl *interperterImpl) join(array reflect.Value, sep reflect.Value) (string, error) {
+func (impl *interpreterImpl) join(array reflect.Value, sep reflect.Value) (string, error) {
 	separator := impl.coerceToString(sep).String()
 	switch array.Kind() {
 	case reflect.Slice:
@@ -152,7 +152,7 @@ func (impl *interperterImpl) join(array reflect.Value, sep reflect.Value) (strin
 	}
 }
 
-func (impl *interperterImpl) toJSON(value reflect.Value) (string, error) {
+func (impl *interpreterImpl) toJSON(value reflect.Value) (string, error) {
 	if value.Kind() == reflect.Invalid {
 		return "null", nil
 	}
@@ -165,7 +165,7 @@ func (impl *interperterImpl) toJSON(value reflect.Value) (string, error) {
 	return string(json), nil
 }
 
-func (impl *interperterImpl) fromJSON(value reflect.Value) (interface{}, error) {
+func (impl *interpreterImpl) fromJSON(value reflect.Value) (interface{}, error) {
 	if value.Kind() != reflect.String {
 		return nil, fmt.Errorf("Cannot parse non-string type %v as JSON", value.Kind())
 	}
@@ -180,7 +180,7 @@ func (impl *interperterImpl) fromJSON(value reflect.Value) (interface{}, error) 
 	return data, nil
 }
 
-func (impl *interperterImpl) hashFiles(paths ...reflect.Value) (string, error) {
+func (impl *interpreterImpl) hashFiles(paths ...reflect.Value) (string, error) {
 	var ps []gitignore.Pattern
 
 	const cwdPrefix = "." + string(filepath.Separator)
@@ -241,7 +241,7 @@ func (impl *interperterImpl) hashFiles(paths ...reflect.Value) (string, error) {
 	return hex.EncodeToString(hasher.Sum(nil)), nil
 }
 
-func (impl *interperterImpl) getNeedsTransitive(job *model.Job) []string {
+func (impl *interpreterImpl) getNeedsTransitive(job *model.Job) []string {
 	needs := job.Needs()
 
 	for _, need := range needs {
@@ -252,11 +252,11 @@ func (impl *interperterImpl) getNeedsTransitive(job *model.Job) []string {
 	return needs
 }
 
-func (impl *interperterImpl) always() (bool, error) {
+func (impl *interpreterImpl) always() (bool, error) {
 	return true, nil
 }
 
-func (impl *interperterImpl) jobSuccess() (bool, error) {
+func (impl *interpreterImpl) jobSuccess() (bool, error) {
 	jobs := impl.config.Run.Workflow.Jobs
 	jobNeeds := impl.getNeedsTransitive(impl.config.Run.Job())
 
@@ -269,11 +269,11 @@ func (impl *interperterImpl) jobSuccess() (bool, error) {
 	return true, nil
 }
 
-func (impl *interperterImpl) stepSuccess() (bool, error) {
+func (impl *interpreterImpl) stepSuccess() (bool, error) {
 	return impl.env.Job.Status == "success", nil
 }
 
-func (impl *interperterImpl) jobFailure() (bool, error) {
+func (impl *interpreterImpl) jobFailure() (bool, error) {
 	jobs := impl.config.Run.Workflow.Jobs
 	jobNeeds := impl.getNeedsTransitive(impl.config.Run.Job())
 
@@ -286,10 +286,10 @@ func (impl *interperterImpl) jobFailure() (bool, error) {
 	return false, nil
 }
 
-func (impl *interperterImpl) stepFailure() (bool, error) {
+func (impl *interpreterImpl) stepFailure() (bool, error) {
 	return impl.env.Job.Status == "failure", nil
 }
 
-func (impl *interperterImpl) cancelled() (bool, error) {
+func (impl *interpreterImpl) cancelled() (bool, error) {
 	return impl.env.Job.Status == "cancelled", nil
 }
