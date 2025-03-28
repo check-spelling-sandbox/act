@@ -37,7 +37,7 @@ func TestCleanImage(t *testing.T) {
 func TestGetImagePullOptions(t *testing.T) {
 	ctx := context.Background()
 
-	config.SetDir("/non-existent/docker")
+	config.SetDir("/nonexistent/docker")
 
 	options, err := getImagePullOptions(ctx, NewDockerPullExecutorInput{})
 	assert.Nil(t, err, "Failed to create ImagePullOptions")

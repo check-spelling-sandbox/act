@@ -106,7 +106,7 @@ func TestEvaluateRunContext(t *testing.T) {
 		{"(fromJSON('{\"foo\":\"bar\"}')).foo", "bar", ""},
 		{"(fromJson('{\"foo\":\"bar\"}')).foo", "bar", ""},
 		{"(fromJson('[\"foo\",\"bar\"]'))[1]", "bar", ""},
-		// github does return an empty string for non-existent files
+		// github does return an empty string for nonexistent files
 		{"hashFiles('**/non-extant-files')", "", ""},
 		{"hashFiles('**/non-extant-files', '**/more-non-extant-files')", "", ""},
 		{"hashFiles('**/non.extant.files')", "", ""},
