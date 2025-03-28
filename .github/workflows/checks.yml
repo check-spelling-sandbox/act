@@ -160,13 +160,13 @@ jobs:
         with:
           name: act-windows-armv7
           path: dist/act_windows_arm_7/act.exe
-      - name: Capture x86_64 (64-bit) MacOS binary
+      - name: Capture x86_64 (64-bit) macOS binary
         if: ${{ !env.ACT }}
         uses: actions/upload-artifact@v4
         with:
           name: act-macos-amd64
           path: dist/act_darwin_amd64_v1/act
-      - name: Capture arm64 (64-bit) MacOS binary
+      - name: Capture arm64 (64-bit) macOS binary
         if: ${{ !env.ACT }}
         uses: actions/upload-artifact@v4
         with:
