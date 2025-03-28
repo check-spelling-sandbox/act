@@ -399,7 +399,7 @@ func TestHandler(t *testing.T) {
 		assert.Equal(t, contents[except], content)
 	})
 
-	t.Run("case insensitive", func(t *testing.T) {
+	t.Run("case-insensitive", func(t *testing.T) {
 		version := "c19da02a2bd7e77277f1ac29ab45c09b7d46a4ee758284e26bb3045ad11d9d20"
 		key := strings.ToLower(t.Name())
 		content := make([]byte, 100)

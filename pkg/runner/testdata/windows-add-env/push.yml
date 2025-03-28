@@ -28,16 +28,16 @@ jobs:
         echo "KEY=test" > $env:GITHUB_ENV
         # Defect missing append, test is broken!!!
         echo "Key=expected" > $env:GITHUB_ENV
-    - name: Assert GITHUB_ENV is merged case insensitive
+    - name: Assert GITHUB_ENV is merged case-insensitive
       run: exit 1
       if: env.KEY != 'expected' || env.Key != 'expected' || env.key != 'expected'
-    - name: Assert step env is merged case insensitive
+    - name: Assert step env is merged case-insensitive
       run: exit 1
       if: env.KEY != 'n/a' || env.Key != 'n/a' || env.key != 'n/a'
       env:
         KeY: 'n/a'
     - uses: actions/checkout@v3
     - uses: ./windows-add-env/action
-    - name: Assert composite env is merged case insensitive
+    - name: Assert composite env is merged case-insensitive
       run: exit 1
       if: env.KEY != 'n/a' || env.Key != 'n/a' || env.key != 'n/a'
