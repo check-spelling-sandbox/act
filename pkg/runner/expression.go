@@ -170,7 +170,7 @@ func (rc *RunContext) newStepExpressionEvaluator(ctx context.Context, step step,
 func getHashFilesFunction(ctx context.Context, rc *RunContext) func(v []reflect.Value) (interface{}, error) {
 	hashFiles := func(v []reflect.Value) (interface{}, error) {
 		if rc.JobContainer != nil {
-			timeed, cancel := context.WithTimeout(ctx, time.Minute)
+			timed, cancel := context.WithTimeout(ctx, time.Minute)
 			defer cancel()
 			name := "workflow/hashfiles/index.js"
 			hout := &bytes.Buffer{}
@@ -211,7 +211,7 @@ func getHashFilesFunction(ctx context.Context, rc *RunContext) func(v []reflect.
 				Finally(func(context.Context) error {
 					rc.JobContainer.ReplaceLogWriter(stdout, stderr)
 					return nil
-				})(timeed)
+				})(timed)
 			output := hout.String() + "\n" + herr.String()
 			guard := "__OUTPUT__"
 			outstart := strings.Index(output, guard)
