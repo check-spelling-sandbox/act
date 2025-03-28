@@ -291,7 +291,7 @@ env:
 %s
 
 jobs:
-  test-espressions:
+  test-expressions:
     runs-on: ubuntu-latest
     steps:
 `, envs)
