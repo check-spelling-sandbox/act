@@ -18,6 +18,6 @@ var ErrNotFound = errors.New("executable file not found in $PATH")
 // If file contains a slash, it is tried directly and the PATH is not consulted.
 // The result may be an absolute path or a path relative to the current directory.
 func LookPath2(file string, lenv Env) (string, error) {
-	// Wasm can not execute processes, so act as if there are no executables at all.
+	// Wasm cannot execute processes, so act as if there are no executables at all.
 	return "", &Error{file, ErrNotFound}
 }
