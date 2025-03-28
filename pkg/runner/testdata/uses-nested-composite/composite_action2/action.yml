@@ -30,9 +30,9 @@ runs:
     with:
       test_input_required: 'test_input_required_value'
       test_input_optional: 'test_input_optional_value'
-      test_input_optional_with_default_overriden: 'test_input_optional_with_default_overriden'
+      test_input_optional_with_default_overridden: 'test_input_optional_with_default_overridden'
       test_input_required_with_default: 'test_input_optional_value'
-      test_input_required_with_default_overriden: 'test_input_required_with_default_overriden'
+      test_input_required_with_default_overridden: 'test_input_required_with_default_overridden'
       secret_input: ${{inputs.test_input_optional}}
     env:
       secret_input: ${{inputs.test_input_optional}}
@@ -50,8 +50,8 @@ runs:
     id: composite2
     with:
       test_input_required: 'test_input_required_value'
-      test_input_optional_with_default_overriden: 'test_input_optional_with_default_overriden'
-      test_input_required_with_default_overriden: 'test_input_required_with_default_overriden'
+      test_input_optional_with_default_overridden: 'test_input_optional_with_default_overridden'
+      test_input_required_with_default_overridden: 'test_input_required_with_default_overridden'
 
   - run: |
       echo "steps.composite2.outputs.test_output=${{ steps.composite2.outputs.test_output }}"

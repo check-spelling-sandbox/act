@@ -11,9 +11,9 @@ jobs:
       with:
         test_input_required: 'test_input_required_value'
         test_input_optional: 'test_input_optional_value'
-        test_input_optional_with_default_overriden: 'test_input_optional_with_default_overriden'
+        test_input_optional_with_default_overridden: 'test_input_optional_with_default_overridden'
         test_input_required_with_default: 'test_input_optional_value'
-        test_input_required_with_default_overriden: 'test_input_required_with_default_overriden'
+        test_input_required_with_default_overridden: 'test_input_required_with_default_overridden'
         secret_input: ${{secrets.test_input_optional || 'NO SUCH SECRET'}}
       env:
         secret_input: ${{secrets.test_input_optional || 'NO SUCH SECRET'}}
@@ -35,8 +35,8 @@ jobs:
       id: composite2
       with:
         test_input_required: 'test_input_required_value'
-        test_input_optional_with_default_overriden: 'test_input_optional_with_default_overriden'
-        test_input_required_with_default_overriden: 'test_input_required_with_default_overriden'
+        test_input_optional_with_default_overridden: 'test_input_optional_with_default_overridden'
+        test_input_required_with_default_overridden: 'test_input_required_with_default_overridden'
 
     - if: steps.composite2.outputs.test_output != 'test_output_value'
       run: |

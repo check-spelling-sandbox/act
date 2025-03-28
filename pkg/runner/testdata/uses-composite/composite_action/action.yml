@@ -10,7 +10,7 @@ inputs:
     description: "optional defaulted input"
     required: false
     default: "test_input_optional_value"
-  test_input_optional_with_default_overriden:
+  test_input_optional_with_default_overridden:
     description: "optional defaulted input"
     required: false
     default: "test_input_optional_value"
@@ -18,7 +18,7 @@ inputs:
     description: "Required with default, due to an old bug of github actions this is allowed"
     required: true
     default: "test_input_optional_value"
-  test_input_required_with_default_overriden:
+  test_input_required_with_default_overridden:
     description: "Required with default, due to an old bug of github actions this is allowed"
     required: true
     default: "test_input_optional_value"
@@ -42,9 +42,9 @@ runs:
         echo "---"
         echo "test_input_required=${{ inputs.test_input_required }}"
         echo "test_input_optional=${{ inputs.test_input_optional }}"
-        echo "test_input_optional_with_default_overriden=${{ inputs.test_input_optional_with_default_overriden }}"
+        echo "test_input_optional_with_default_overridden=${{ inputs.test_input_optional_with_default_overridden }}"
         echo "test_input_required_with_default=${{ inputs.test_input_required_with_default }}"
-        echo "test_input_required_with_default_overriden=${{ inputs.test_input_required_with_default_overriden }}"
+        echo "test_input_required_with_default_overridden=${{ inputs.test_input_required_with_default_overridden }}"
         echo "---"
       shell: bash
 
@@ -62,7 +62,7 @@ runs:
       shell: bash
 
     - run: |
-        if [ "${{ inputs.test_input_optional_with_default_overriden }}" != "test_input_optional_with_default_overriden" ]; then
+        if [ "${{ inputs.test_input_optional_with_default_overridden }}" != "test_input_optional_with_default_overridden" ]; then
           exit 1
         fi
       shell: bash
@@ -74,7 +74,7 @@ runs:
       shell: bash
 
     - run: |
-        if [ "${{ inputs.test_input_required_with_default_overriden }}" != "test_input_required_with_default_overriden" ]; then
+        if [ "${{ inputs.test_input_required_with_default_overridden }}" != "test_input_required_with_default_overridden" ]; then
           exit 1
         fi
       shell: bash
