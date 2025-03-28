@@ -240,7 +240,7 @@ func removeGitIgnore(ctx context.Context, directory string) error {
 	return nil
 }
 
-// TODO: break out parts of function to reduce complexicity
+// TODO: break out parts of function to reduce complexity
 //
 //nolint:gocyclo
 func execAsDocker(ctx context.Context, step actionStep, actionName, basedir, subpath string, localAction bool, entrypointType string) error {
