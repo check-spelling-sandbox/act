@@ -807,7 +807,7 @@ func TestParseEnvfileVariablesWithBOMUnicode(t *testing.T) {
 	}
 }
 
-func TestParseLabelfileVariables(t *testing.T) {
+func TestParseLabelFileVariables(t *testing.T) {
 	e := "open nonexistent: no such file or directory"
 	if runtime.GOOS == "windows" {
 		e = "open nonexistent: The system cannot find the file specified."
