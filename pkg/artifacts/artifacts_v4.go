@@ -222,8 +222,8 @@ func (r artifactV4Routes) verifySignature(ctx *ArtifactContext, endp string) (in
 	dsig, _ := base64.URLEncoding.DecodeString(sig)
 	taskID, _ := strconv.ParseInt(rawTaskID, 10, 64)
 
-	expecedsig := r.buildSignature(endp, expires, artifactName, taskID)
-	if !hmac.Equal(dsig, expecedsig) {
+	expectedSig := r.buildSignature(endp, expires, artifactName, taskID)
+	if !hmac.Equal(dsig, expectedSig) {
 		log.Error("Error unauthorized")
 		ctx.Error(http.StatusUnauthorized, "Error unauthorized")
 		return -1, "", false
