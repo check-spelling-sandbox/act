@@ -37,7 +37,7 @@ New issues can be created with in our [GitHub repo](https://github.com/nektos/ac
 
 Pull requests should target the `master` branch. Please also reference the issue from the description of the pull request using [special keyword syntax](https://help.github.com/articles/closing-issues-via-commit-messages/) to auto close the issue when the PR is merged. For example, include the phrase `fixes #14` in the PR description to have issue #14 auto close. Please send documentation updates for the [act user guide](https://nektosact.com) to [nektos/act-docs](https://github.com/nektos/act-docs).
 
-### <a id="style"></a> Styleguide
+### <a id="style"></a> Style guide
 
 When submitting code, please make every effort to follow existing conventions and style in order to keep the code as readable as possible. Here are a few points to keep in mind:
 
