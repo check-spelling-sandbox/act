@@ -21,7 +21,7 @@ func TestImageExistsLocally(t *testing.T) {
 	}
 	ctx := context.Background()
 	// to help make this test reliable and not flaky, we need to have
-	// an image that will exist, and onew that won't exist
+	// an image that will exist, and one that won't exist
 
 	// Test if image exists with specific tag
 	invalidImageTag, err := ImageExistsLocally(ctx, "library/alpine:this-random-tag-will-never-exist", "linux/amd64")
