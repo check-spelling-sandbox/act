@@ -74,7 +74,7 @@ func (mfs *memoryFs) Readlink(path string) (string, error) {
 	return mfs.Filesystem.Readlink(path)
 }
 
-func TestIgnoredTrackedfile(t *testing.T) {
+func TestIgnoredTrackedFile(t *testing.T) {
 	fs := memfs.New()
 	_ = fs.MkdirAll("mygitrepo/.git", 0o777)
 	dotgit, _ := fs.Chroot("mygitrepo/.git")
